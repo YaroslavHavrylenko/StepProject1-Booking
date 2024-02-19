@@ -9,5 +9,8 @@
         <module name="StepProjectBooking" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="StepProjectBooking" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
