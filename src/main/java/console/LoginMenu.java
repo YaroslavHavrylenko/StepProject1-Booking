@@ -14,7 +14,9 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 public class LoginMenu {
     public static void addMainMenu() {
-        StringBuilder sb = new StringBulder();
+
+        StringBuilder sb = new StringBuilder();
+
         sb.append("--------------------------------\n");
         sb.append("Менеджер по бронированию билетов\n".toUpperCase());
         sb.append("--------------------------------\n");

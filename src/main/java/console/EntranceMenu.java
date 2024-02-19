@@ -3,17 +3,20 @@ package console;
 import flight.FlightController;
 import user.UserController;
 import user.User;
+import java.util.Scanner;
+
 public class EntranceMenu {
     public static void addEntranceMenu() {
         StringBuilder sb = new StringBuilder();
         sb.append("--------------------------------\n");
         sb.append("Менеджер по бронированию билетов\n");
         sb.append("--------------------------------\n");
-        sb.append("Войти\n");
-        sb.append("Регистрация\n");
-        sb.append("Войти как гость\n");
-        sb.append("Помощь\n");
-        sb.append("Выйти\n");
+        sb.append("1) Войти\n");
+        sb.append("2) Регистрация\n");
+        sb.append("3) Войти как гость\n");
+        sb.append("4) Помощь\n");
+        sb.append("5) Выйти\n");
+
         sb.append("--------------------------------\n");
 
         UserController userController = new UserController();
@@ -63,12 +66,14 @@ public class EntranceMenu {
                     command = "5";
                     break;
 
-                case "4";
+                case "4":
+
                     System.out.println("К сожалению, мы не можем вам помочь ;'( \n Пожалуйста, нажмите Enter, чтобы вернуться в главное меню");
                     command = scanner.nextLine();
                     break;
 
-                case "5";
+                case "5":
+
                     System.out.println("До свидания");
                     userController.save();
                     break;
