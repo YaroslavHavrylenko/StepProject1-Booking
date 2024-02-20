@@ -3,7 +3,6 @@ package console;
 import flight.FlightController;
 import user.UserController;
 import user.User;
-
 import java.util.Scanner;
 
 public class EntranceMenu {
@@ -17,6 +16,7 @@ public class EntranceMenu {
         sb.append("3) Войти как гость\n");
         sb.append("4) Помощь\n");
         sb.append("5) Выйти\n");
+
         sb.append("--------------------------------\n");
 
         UserController userController = new UserController();
@@ -67,11 +67,13 @@ public class EntranceMenu {
                     break;
 
                 case "4":
+
                     System.out.println("К сожалению, мы не можем вам помочь ;'( \n Пожалуйста, нажмите Enter, чтобы вернуться в главное меню");
                     command = scanner.nextLine();
                     break;
 
                 case "5":
+
                     System.out.println("До свидания");
                     userController.save();
                     break;
