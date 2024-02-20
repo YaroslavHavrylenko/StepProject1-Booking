@@ -40,10 +40,12 @@ public class FlightService {
 
     try {
       List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
+
       if (lines.size() == 0) {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        FlightGenerator.generateFlight(200);
-        for (Flight flight : flightDao.flights) {
+        ArrayList<Flight> generatedFlights = FlightGenerator.generateFlight(200);
+        flightDao.flights.addAll(generatedFlights);
+        for (Flight flight : generatedFlights) {
           bw.write(flight.toString());
           bw.write("\n");
         }
@@ -55,7 +57,7 @@ public class FlightService {
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        flightDao.flights.addAll(FlightGenerator.generateFlight(50));
+        flightDao.flights.addAll(FlightGenerator.generateFlight(200));
         for (Flight flight : flightDao.flights) {
           bw.write(flight.toString());
           bw.write("\n");
@@ -73,7 +75,7 @@ public class FlightService {
     List<Flight> flightList = new ArrayList<>();
 
     try {
-      List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
+      List<String> lines = new BufferedReader(new FileReader(file)).lines().toList();
       lines.stream().map(line -> line.split(" ")).forEach(split1 -> {
         split1[2] = split1[2].replaceAll("T", "|");
         flightList.add(new Flight(Integer.parseInt(split1[0].trim()),
@@ -88,7 +90,6 @@ public class FlightService {
     } catch (Exception e) {
       System.out.printf(" Database file: '%s' not found! \n", file);
     }
-
   }
 
   public String search(Airport destination, String date, int ticket) {
@@ -112,7 +113,7 @@ public class FlightService {
       }
     });
 
-    if (searchingFlights.size()==0) sb.append("Flight with your input could not found :(");
+    if (searchingFlights.isEmpty()) sb.append("Flight with your input could not found :(");
     return sb.toString();
 
   }
@@ -137,6 +138,4 @@ public class FlightService {
     followingFlights.forEach(flight-> flightBuilder.append(flight.represent()));
     return flightBuilder.toString();
   }
-
-
 }
