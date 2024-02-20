@@ -74,7 +74,7 @@ public class LoginMenu {
 
                         System.out.println(flightController.search(destination, date, tickets));
 
-                        System.out.println("Хотите забронировать? (Введите ДА для бронирования, НЕТ для возврата в главное меню)");
+                        System.out.println("Хотите забронировать? (Введите YES для бронирования, NO для возврата в главное меню)");
                         command2 = scanner.nextLine();
                         if (command2.toLowerCase().equals("yes")) {
                             List<Person> passengers = new ArrayList<>();
@@ -147,7 +147,7 @@ public class LoginMenu {
                         List<Booking> userBookings = bookingController.getAll()
                                 .stream()
                                 .filter(booking -> booking.getUser().getId() == user.getId())
-                                .collect(Collectors.toList());
+                                .toList();
                         userBookings.forEach(ub -> System.out.println(ub.represent()));
 
                         System.out.print("Пожалуйста, выберите ID рейса, который вы хотите отменить: ");
@@ -193,7 +193,7 @@ public class LoginMenu {
                                 .stream()
                                 .filter(b -> b.getUser().getId() == user.getId())
                                 .collect(Collectors.toList());
-                        if (userBookings.size() == 0) System.out.println("Вы еще не забронировали ни одного рейса");
+                        if (userBookings.isEmpty()) System.out.println("Вы еще не забронировали ни одного рейса");
                         userBookings.forEach(ub -> System.out.println(ub.represent()));
 
                         System.out.println("Пожалуйста, нажмите Enter, чтобы вернуться в главное меню");
@@ -216,7 +216,6 @@ public class LoginMenu {
                     System.out.println("Вы ввели неверные данные. Пожалуйста, нажмите Enter, чтобы вернуться в главное меню");
                     command2 = scanner.nextLine();
                     break;
-
             }
         }
     }
