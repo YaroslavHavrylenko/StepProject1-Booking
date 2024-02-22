@@ -30,7 +30,7 @@ Repo branch main is protected. For making contributions to project to branch mai
 
 2. Yaroslav Havrylenko - YaroslavHavrylenko:
 - coding booking, user
-- 
+
 3. Andrew Onyschenko -   AndrewOnyschenko:
 - coding console
 
